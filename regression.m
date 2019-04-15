@@ -27,7 +27,7 @@ function [betas, resid] = regression(data,regressors,alpha,constant)
     LAMBDA = eye(size(X,2))*alpha;
 
     % Least squares minimization
-    C_ss_inv = pinv(cov(X'*X) + LAMBDA);
+    C_ss_inv = pinv(X'*X + LAMBDA);
     
     betas = C_ss_inv * (X'*data);
     %Calculate residuals
